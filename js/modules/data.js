@@ -51,25 +51,30 @@ function loadGame() {
             rank: E(parsedData.rank),
             tier: E(parsedData.tier),
             tetr: E(parsedData.tetr),
-            achievements: parsedData.achievements,
+            achievements: parsedData.achievements || [],
             infinity: {
-                times: E(parsedData.infinity.times),
-                points: E(parsedData.infinity.points),
-                point_multi: parsedData.infinity.point_multi.map(m => E(m)),
-                point_total: E(parsedData.infinity.point_total),
-                limit: E(parsedData.infinity.limit),
-                limit_level: E(parsedData.infinity.limit_level),
-                upgrades: parsedData.infinity.upgrades
+                times: E(parsedData.infinity?.times || 0),
+                points: E(parsedData.infinity?.points || 0),
+                point_multi: (parsedData.infinity?.point_multi || []).map(m => E(m)),
+                point_total: E(parsedData.infinity?.point_total || 0),
+                limit: E(parsedData.infinity?.limit || 'e9e15'),
+                limit_level: E(parsedData.infinity?.limit_level || 0),
+                upgrades: parsedData.infinity?.upgrades || []
             },
         
             options: {
-                notation: parsedData.options.notation,
-                max_range: parsedData.options.max_range,
-                confirmations: parsedData.options.confirmations
+                notation: parsedData.options?.notation || "sc",
+                max_range: parsedData.options?.max_range || 6,
+                confirmations: parsedData.options?.confirmations || {
+                    rank: true,
+                    tier: true,
+                    infinity: true,
+                    ticker: true
+                }
             },
             challenges: {
-                completed: parsedData.challenges.completed,
-                current: parsedData.challenges.current
+                completed: parsedData.challenges?.completed || [E(0)],
+                current: parsedData.challenges?.current || -1
             }
         };
         
@@ -85,7 +90,7 @@ function addMissingDefaults(currentPlayer) {
     
     // Recursive function to add missing properties
     function addMissingProps(current, defaultObj) {
-        if (typeof current !== 'object' || current === null || Array.isArray(current)) {
+        if (typeof current !== 'object' || current === null) {
             return defaultObj;
         }
 
@@ -97,12 +102,22 @@ function addMissingDefaults(currentPlayer) {
             }
         }
 
+        // Handle arrays separately
+        if (Array.isArray(defaultObj)) {
+            for (let i = 0; i < defaultObj.length; i++) {
+                if (i >= current.length) {
+                    current.push(defaultObj[i]);
+                } else if (typeof defaultObj[i] === 'object' && !Array.isArray(defaultObj[i])) {
+                    current[i] = addMissingProps(current[i], defaultObj[i]);
+                }
+            }
+        }
+
         return current;
     }
     
     return addMissingProps(currentPlayer, defaultPlayer);
 }
-
 
 
 function getDefaultPlayer() {
@@ -420,3 +435,4 @@ function softcap(gain) {
 
          
  } 
+
