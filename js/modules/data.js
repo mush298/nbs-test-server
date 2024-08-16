@@ -172,7 +172,7 @@ function importSave() {
 }
 
 // Initialize player
-player = getPlayerData()
+load()
 const FPS = 25;
 let buttons = [[], [], [], []];
 
