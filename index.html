@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+
+<html class = 'dark-mode'>
+    <p>Nolan's Button Simulator v0.4 coming soon! :D</p>
+
+    <link rel = 'stylesheet' href = "main.css">
+
+   
+
+
+    
+
+
+
+
+
+
+
+
+<p id = 'tabs'></p>
+
+
+
+<div id = "stats-tab">
+<div id = 'bct'>
+    <div id = 'rank-div'>
+
+        <p id = 'rank-amount'>Rank 0</p>
+
+        <div id = "bct">
+
+        <button id = 'rank-button' onclick = 'upgradeRank()'>Rank up for 100 cash</button>
+
+        </div>
+
+        <div id = 'rankrewards'>
+            <p id = 'rankreward1'></p>
+            <p id = 'rankreward2'></p>
+            <p id = 'rankreward3'></p>
+            <p id = 'rankreward4'></p>
+            <p id = 'rankreward5'></p>
+           </div>
+    </div>
+ <br>
+    <div id = 'tier-div'>
+
+        <p id = 'tier-amount'>Tier 0</p>
+
+        <div id = "bct">
+
+        <button id = 'tier-button' onclick = 'upgradeTier()'>Tier up at rank 10</button>
+
+        </div>
+
+        <div id = 'tierewards'>
+            <p id = 'tierreward1'></p>
+            <p id = 'tierreward2'></p>
+            <p id = 'tierreward3'></p>
+            <p id = 'tierreward4'></p>
+        </div>
+    </div>
+</div>
+    <br>
+
+    <div id = "main-currencies">
+        <p id = 'cash'></p>
+        <p id = 'multiplier'></p>
+        <p id = 'rebirth'></p>
+        <p id = 'ultra-rebirth'></p>
+        <p id = 'prestige'></p>
+    </div>
+
+    <div id = "buttons">
+        <div id = "multiplier-buttons"></div>
+        <div id = "rebirth-buttons"></div>
+        <div id = "ultra-rebirth-buttons"></div>
+        <div id = "prestige-buttons"></div>
+    </div>
+</div>
+
+<div id = "ascension-tab">
+
+    <h2 id = "ascension-count">You currently have 0 ascensions</h2>
+    <p id = "ascension-power">You have 1 ascension power</p>
+
+    <div id = "bct">
+
+    <button id = "ascension-button" onclick = "ascend()">Ascend for e1,250 cash</button>
+
+    </div>
+
+    <p>Ascending will reset your Tiers and everything before that for powerful boosts.</p>
+
+    <div id = 'ascensioneffects'>
+        <p id = 'ascensioneffect1'></p>
+        <p id = 'ascensioneffect2'></p>
+        <p id = 'ascensioneffect3'></p>
+        <p id = 'ascensioneffect4'></p>
+        <p id = 'ascensioneffect5'></p>
+        <p id = 'ascensioneffect6'></p>
+    </div>
+
+</div>
+
+<div id = "options-tab">
+    <h1>Saving/Loading</h1>
+    <div id = "bct">
+        <button onclick = 'saveGame(player)'>Save</button>
+        <button onclick = 'exportSave()'>Export Save</button>
+        <button onclick = 'importSave()'>Import Save</button>
+        <button class = "wipe" onclick = 'wipeSave()'>WIPE SAVE!!!</button>
+    </div>
+
+</div>
+
+<script src = "js/break_eternity.js"></script>
+<script src = "js/eternal_notations.min.js"></script>
+<script src = "js/functions.js"></script>
+<script src = "js/format.js"></script>
+<script src = "js/data.js"></script>
+<script src = "js/currencies.js"></script>
+<script src = "js/features/ranks.js"></script>
+<script src="js/languages/language.js"></script>
+<script src="js/languages/lang-en.js"></script>
+<script src = "js/features/stats.js"></script>
+<script src = "js/features/ascension.js"></script>
+<script src = "js/tabs.js"></script>
+
+</html>
