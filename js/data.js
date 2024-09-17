@@ -1,5 +1,5 @@
 var E = x => new Decimal(x);
-const storageKey = 'NBSplayerdata'; // You can change this name as needed
+const storageKey = 'NBSplayerdata_TEST'; // You can change this name as needed
 
 function saveGame(player) {
     const saveData = {
